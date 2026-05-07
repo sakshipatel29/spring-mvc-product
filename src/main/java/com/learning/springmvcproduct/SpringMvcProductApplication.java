@@ -2,7 +2,9 @@ package com.learning.springmvcproduct;
 
 import com.learning.springmvcproduct.model.Product;
 import com.learning.springmvcproduct.service.ProductService;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 
 import java.util.List;
 
@@ -10,38 +12,12 @@ import java.util.List;
 public class SpringMvcProductApplication {
 
     public static void main(String[] args) {
+        ApplicationContext context =  SpringApplication.run(SpringMvcProductApplication.class, args);
 
-        ProductService service = new ProductService();
-        service.addProduct(new Product("Macbook Air", "Laptop", "Table", 2027));
-        service.addProduct(new Product("HP", "Laptop", "Cupboard", 2025));
-        service.addProduct(new Product("Iphone", "Phone", "Bag", 2022));
-        service.addProduct(new Product("Lightning Cable", "Cable", "Table", 2023));
-        service.addProduct(new Product("Macbook Pro", "Laptop", "Table", 2027));
-        service.addProduct(new Product("Asus VivoBook", "Laptop", "Bag", 2029));
-
-        List<Product> products = service.getAllProducts();
-        for(Product p : products){
-            System.out.println(p);
-        }
-
-        System.out.println("=================Particular==========================");
-
-        Product oneProduct = service.getProduct("Iphone");
-        System.out.println(oneProduct);
-
-        System.out.println("===================By Place========================");
-
-        List<Product> prods = service.getProductByPlace("Table");
+        ProductService service = context.getBean(ProductService.class);
+        List<Product> prods = service.getProductByPlace("Cupboard");
         for(Product p : prods){
             System.out.println(p);
         }
-
-        System.out.println("===================Out of Warranty========================");
-
-        List<Product> prods1 = service.outOfWarranty();
-        for(Product p : prods1){
-            System.out.println(p);
-        }
-
     }
 }
