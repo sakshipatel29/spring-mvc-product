@@ -35,5 +35,13 @@ public class SpringMvcProductApplication {
         for(Product p : prods){
             System.out.println(p);
         }
+
+        System.out.println("===================Out of Warranty========================");
+
+        List<Product> prods1 = service.outOfWarranty();
+        for(Product p : prods1){
+            System.out.println(p);
+        }
+
     }
 }

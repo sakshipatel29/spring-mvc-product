@@ -35,4 +35,14 @@ public class ProductService {
         }
         return prods;
     }
+
+    public List<Product> outOfWarranty(){
+        List<Product> prods = new ArrayList<>();
+        for(Product p : products){
+            if(p.getWarranty() <= 2025){
+                prods.add(p);
+            }
+        }
+        return prods;
+    }
 }
