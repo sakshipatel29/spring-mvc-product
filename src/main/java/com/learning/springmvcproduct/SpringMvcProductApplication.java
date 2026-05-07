@@ -20,6 +20,20 @@ public class SpringMvcProductApplication {
         service.addProduct(new Product("Asus VivoBook", "Laptop", "Bag", 2029));
 
         List<Product> products = service.getAllProducts();
-        System.out.println(products);
+        for(Product p : products){
+            System.out.println(p);
+        }
+
+        System.out.println("=================Particular==========================");
+
+        Product oneProduct = service.getProduct("Iphone");
+        System.out.println(oneProduct);
+
+        System.out.println("===================By Place========================");
+
+        List<Product> prods = service.getProductByPlace("Table");
+        for(Product p : prods){
+            System.out.println(p);
+        }
     }
 }

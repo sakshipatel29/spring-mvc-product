@@ -16,4 +16,23 @@ public class ProductService {
     public List<Product> getAllProducts(){
         return products;
     }
+
+    public Product getProduct(String name){
+        for(Product p : products) {
+            if (p.getName().equals(name)) {
+                return p;
+            }
+        }
+        return null;
+    }
+
+    public List<Product> getProductByPlace(String place){
+        List<Product> prods = new ArrayList<>();
+        for(Product p : products){
+            if(p.getPlace().equals(place)){
+                prods.add(p);
+            }
+        }
+        return prods;
+    }
 }
